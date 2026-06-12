@@ -7,15 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --lima: #84C400;
-      --lima-dark: #5E9100;
-      --lima-light: #C6E87A;
-      --lima-pale: #F0FAD6;
+      --lima: #5AABDC;
+      --lima-dark: #2A7FAF;
+      --lima-light: #A8D8F0;
+      --lima-pale: #EAF5FC;
       --white: #FFFFFF;
-      --gray-light: #F5F5F5;
+      --gray-light: #F5F8FB;
       --gray: #6B7280;
-      --dark: #1A2E05;
-      --shadow: 0 4px 24px rgba(132,196,0,0.13);
+      --dark: #0D2A40;
+      --shadow: 0 4px 24px rgba(42,127,175,0.13);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
@@ -26,7 +26,7 @@
       position: fixed; top:0; left:0; right:0; z-index:999;
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(8px);
-      box-shadow: 0 2px 16px rgba(132,196,0,0.12);
+      box-shadow: 0 2px 16px rgba(42,127,175,0.12);
       display: flex; align-items:center; justify-content:space-between;
       padding: 0 5%; height: 68px;
     }
@@ -58,7 +58,7 @@
     /* ── HERO ── */
     #inicio {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--dark) 0%, #2E5A09 50%, #3D7A0C 100%);
+      background: linear-gradient(135deg, var(--dark) 0%, #1A5276 50%, #2471A3 100%);
       display:flex; align-items:center; justify-content:center;
       text-align:center; padding: 100px 5% 60px;
       position:relative; overflow:hidden;
@@ -66,12 +66,12 @@
     #inicio::before {
       content:'';
       position:absolute; inset:0;
-      background: radial-gradient(circle at 70% 40%, rgba(132,196,0,0.25) 0%, transparent 60%);
+      background: radial-gradient(circle at 70% 40%, rgba(90,171,220,0.25) 0%, transparent 60%);
     }
     .hero-content { position:relative; z-index:1; max-width:800px; }
     .hero-badge {
       display:inline-block;
-      background: rgba(132,196,0,0.2);
+      background: rgba(90,171,220,0.2);
       border: 1px solid var(--lima);
       color: var(--lima-light);
       padding:6px 20px; border-radius:20px;
@@ -95,7 +95,7 @@
       padding:14px 32px; border-radius:30px;
       font-weight:700; font-size:0.95rem; text-decoration:none;
       transition:all 0.25s; display:inline-block;
-      box-shadow: 0 4px 20px rgba(132,196,0,0.4);
+      box-shadow: 0 4px 20px rgba(42,127,175,0.4);
     }
     .btn-primary:hover { background: var(--lima-light); transform:translateY(-2px); }
     .btn-outline {
@@ -168,7 +168,7 @@
       overflow:hidden; transition:transform 0.3s, box-shadow 0.3s;
       border:2px solid transparent;
     }
-    .esp-card:hover { transform:translateY(-6px); box-shadow:0 12px 40px rgba(132,196,0,0.2); border-color: var(--lima); }
+    .esp-card:hover { transform:translateY(-6px); box-shadow:0 12px 40px rgba(42,127,175,0.2); border-color: var(--lima); }
     .esp-header {
       background: linear-gradient(135deg, var(--lima-dark), var(--lima));
       padding:36px 30px; color:#fff;
@@ -230,7 +230,7 @@
     }
     .btn-form:hover { background: var(--lima); }
     .meet-box {
-      background: linear-gradient(135deg, var(--dark), #2E5A09);
+      background: linear-gradient(135deg, var(--dark), #1A5276);
       border-radius:12px; padding:20px; text-align:center; color:#fff;
     }
     .meet-box p { font-size:0.88rem; opacity:0.85; margin-bottom:14px; }
@@ -347,6 +347,112 @@
       .stats-bar { gap:30px; }
       .nav-links { display:none; }
     }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── DARK MODE TOGGLE ── */
+    .dark-toggle {
+      background: none; border: 2px solid var(--lima-light);
+      border-radius: 50px; cursor: pointer;
+      width: 52px; height: 28px; position: relative;
+      transition: background 0.3s, border-color 0.3s;
+      flex-shrink: 0;
+    }
+    .dark-toggle::after {
+      content: '☀️';
+      position: absolute; top: 2px; left: 3px;
+      width: 20px; height: 20px;
+      border-radius: 50%; background: var(--lima);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; line-height: 20px; text-align: center;
+      transition: transform 0.3s, background 0.3s;
+    }
+    body.dark .dark-toggle::after {
+      content: '🌙';
+      transform: translateX(23px);
+      background: var(--lima-dark);
+    }
+
+    /* ── DARK MODE THEME ── */
+    body.dark {
+      background: #0a1929;
+      color: #ddeeff;
+    }
+    body.dark nav {
+      background: rgba(10,25,41,0.97);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    }
+    body.dark .nav-links a { color: #b0d4ee; }
+    body.dark .nav-links a:hover,
+    body.dark .nav-links a.active { background: var(--lima-dark); color:#fff; }
+    body.dark .logo { color: var(--lima-light); }
+    body.dark .logo span { color: var(--lima); }
+
+    body.dark .stats-bar { background: #0f2337; }
+    body.dark .stat-num { color: var(--lima); }
+
+    body.dark #quienes-somos { background: #0d1f33; }
+    body.dark .section-title { color: #e0f0ff; }
+    body.dark .section-label { color: var(--lima); }
+    body.dark .two-col p { color: #a0c4de; }
+    body.dark .value-card { background: #132d46; border-left-color: var(--lima); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    body.dark .value-card h4 { color: var(--lima-light); }
+    body.dark .value-card p { color: #7eb5d4; }
+
+    body.dark #especialidades { background: #0a1929; }
+    body.dark .esp-card { background: #0f2337; box-shadow: 0 6px 30px rgba(0,0,0,0.3); }
+    body.dark .esp-body { background: #0f2337; }
+    body.dark .esp-features li { color: #a0c4de; border-bottom-color: #1a3a55; }
+    body.dark .esp-tab { background: #0f2337; border-color: #2A7FAF; color: var(--lima-light); }
+    body.dark .esp-tab.active, body.dark .esp-tab:hover { background: var(--lima-dark); color:#fff; }
+    body.dark .video-placeholder { background: linear-gradient(135deg, #0f2337, #132d46); border-color: #2A7FAF; }
+    body.dark .video-placeholder p { color: #7eb5d4; }
+    body.dark .cap-item { background: #132d46; }
+    body.dark .cap-item h5 { color: #e0f0ff; }
+    body.dark .cap-item p { color: #7eb5d4; }
+    body.dark .form-embed { background: #132d46; }
+    body.dark .form-embed p { color: #a0c4de; }
+
+    body.dark #contacto { background: #0d1f33; }
+    body.dark .contact-info p { color: #a0c4de; }
+    body.dark .contact-item h5 { color: #e0f0ff; }
+    body.dark .contact-item p { color: #7eb5d4; }
+    body.dark .contact-form-box { background: #0f2337; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+    body.dark .contact-form-box h3 { color: #e0f0ff; }
+    body.dark .form-group label { color: #a0c4de; }
+    body.dark .form-group input,
+    body.dark .form-group select,
+    body.dark .form-group textarea {
+      background: #0a1929; border-color: #1e4060; color: #ddeeff;
+    }
+    body.dark .form-group input:focus,
+    body.dark .form-group select:focus,
+    body.dark .form-group textarea:focus { border-color: var(--lima); }
+    body.dark .form-group select option { background: #0a1929; }
+
+    body.dark footer { background: #060f1a; }
+
+    body.dark .modal { background: #0f2337; }
+    body.dark .modal h2 { color: #e0f0ff; }
+    body.dark .edit-section label { color: #a0c4de; }
+    body.dark .edit-section input,
+    body.dark .edit-section textarea { background: #0a1929; border-color: #1e4060; color: #ddeeff; }
+    body.dark .edit-section input:focus,
+    body.dark .edit-section textarea:focus { border-color: var(--lima); }
+    body.dark .btn-cancel { background: #0a1929; border-color: #1e4060; color: #a0c4de; }
   </style>
 </head>
 <body>
@@ -360,11 +466,12 @@
     <li><a href="#especialidades">Especialidades</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
+  <button class="dark-toggle" onclick="toggleDark()" title="Modo oscuro"></button>
 </nav>
 
 <!-- HERO -->
 <section id="inicio">
-  <div class="hero-content">
+  <div class="hero-content reveal">
     <span class="hero-badge">🏥 Clínica Virtual RM2</span>
     <h1 class="hero-title">Tu Salud,<br/><span>Sin Fronteras</span></h1>
     <p class="hero-sub">Atención médica especializada en línea. Consulta con nuestros especialistas en cirugía desde cualquier lugar, con la misma calidad y confianza de una consulta presencial.</p>
@@ -377,28 +484,28 @@
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Especialidades Quirúrgicas</div></div>
-  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Atención Virtual</div></div>
-  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Disponibilidad Online</div></div>
-  <div class="stat"><div class="stat-num">RM2</div><div class="stat-label">Clínica de Excelencia</div></div>
+  <div class="stat reveal reveal-delay-1"><div class="stat-num">2</div><div class="stat-label">Especialidades Quirúrgicas</div></div>
+  <div class="stat reveal reveal-delay-2"><div class="stat-num">100%</div><div class="stat-label">Atención Virtual</div></div>
+  <div class="stat reveal reveal-delay-3"><div class="stat-num">24/7</div><div class="stat-label">Disponibilidad Online</div></div>
+  <div class="stat reveal reveal-delay-4"><div class="stat-num">RM2</div><div class="stat-label">Clínica de Excelencia</div></div>
 </div>
 
 <!-- QUIÉNES SOMOS -->
 <section id="quienes-somos">
   <div class="two-col">
-    <div>
+    <div class="reveal">
       <p class="section-label">Nuestra Institución</p>
       <h2 class="section-title">¿Quiénes <span>Somos</span>?</h2>
       <p id="about-text">Somos RM2, una clínica virtual de especialidades médicas quirúrgicas comprometida con brindar atención de calidad a través de plataformas digitales. Nuestro equipo está conformado por estudiantes de medicina de quinto semestre con formación en las ramas más avanzadas de la cirugía.</p>
       <p>Nuestra misión es democratizar el acceso a la información médica especializada, ofreciendo un espacio educativo y de consulta donde pacientes y profesionales puedan encontrar recursos confiables, videos de capacitación y orientación personalizada.</p>
       <div class="values-grid">
-        <div class="value-card"><h4>🎯 Misión</h4><p>Atención médica virtual accesible y de calidad para todos.</p></div>
-        <div class="value-card"><h4>🔭 Visión</h4><p>Ser referente en salud digital en América Latina.</p></div>
-        <div class="value-card"><h4>❤️ Valores</h4><p>Ética, excelencia, empatía y compromiso.</p></div>
-        <div class="value-card"><h4>🌱 Compromiso</h4><p>Educación continua y actualización permanente.</p></div>
+        <div class="value-card reveal reveal-delay-1"><h4>🎯 Misión</h4><p>Atención médica virtual accesible y de calidad para todos.</p></div>
+        <div class="value-card reveal reveal-delay-2"><h4>🔭 Visión</h4><p>Ser referente en salud digital en América Latina.</p></div>
+        <div class="value-card reveal reveal-delay-3"><h4>❤️ Valores</h4><p>Ética, excelencia, empatía y compromiso.</p></div>
+        <div class="value-card reveal reveal-delay-4"><h4>🌱 Compromiso</h4><p>Educación continua y actualización permanente.</p></div>
       </div>
     </div>
-    <div class="about-img">
+    <div class="about-img reveal reveal-delay-2">
       <span class="big">RM2</span>
       <span class="small">Clínica Virtual de Especialidades</span>
       <ul class="team-list">
@@ -414,7 +521,7 @@
 
 <!-- ESPECIALIDADES -->
 <section id="especialidades">
-  <div class="center">
+  <div class="center reveal">
     <p class="section-label">Nuestras Áreas</p>
     <h2 class="section-title">Nuestras <span>Especialidades</span></h2>
     <p style="color:var(--gray);line-height:1.7;">Cada especialidad cuenta con presentación, características, videos educativos, capacitaciones, formularios y links para reuniones virtuales.</p>
@@ -423,7 +530,7 @@
   <div class="esp-grid">
 
     <!-- CIRUGÍA GENERAL -->
-    <div class="esp-card">
+    <div class="esp-card reveal reveal-delay-1">
       <div class="esp-header">
         <div class="esp-icon">🔬</div>
         <h3>Cirugía General</h3>
@@ -515,8 +622,8 @@
     </div>
 
     <!-- CIRUGÍA PLÁSTICA -->
-    <div class="esp-card">
-      <div class="esp-header" style="background:linear-gradient(135deg, #2E5A09, #84C400);">
+    <div class="esp-card reveal reveal-delay-2">
+      <div class="esp-header" style="background:linear-gradient(135deg, #1A5276, #5AABDC);">
         <div class="esp-icon">✨</div>
         <h3>Cirugía Plástica</h3>
         <p>Reconstrucción, estética y manejo de quemados</p>
@@ -611,12 +718,12 @@
 
 <!-- CONTACTO -->
 <section id="contacto">
-  <div style="text-align:center;margin-bottom:50px;">
+  <div style="text-align:center;margin-bottom:50px;" class="reveal">
     <p class="section-label">Comunícate con Nosotros</p>
     <h2 class="section-title">Contacto <span>&</span> Citas</h2>
   </div>
   <div class="contact-grid">
-    <div class="contact-info">
+    <div class="contact-info reveal reveal-delay-1">
       <p>Estamos disponibles para resolver tus dudas y agendar tu consulta virtual. Completa el formulario o contáctanos directamente por nuestros canales oficiales.</p>
       <div class="contact-item">
         <div class="contact-icon">📧</div>
@@ -635,7 +742,7 @@
         <div><h5>Plataforma Virtual</h5><p>Consultas 100% online</p></div>
       </div>
     </div>
-    <div class="contact-form-box">
+    <div class="contact-form-box reveal reveal-delay-2">
       <h3>Agendar Consulta</h3>
       <div class="form-group">
         <label>Nombre completo</label>
@@ -788,6 +895,28 @@
   document.getElementById('editModal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
+
+  // DARK MODE
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('rm2-dark', document.body.classList.contains('dark'));
+  }
+  // Restore preference
+  if (localStorage.getItem('rm2-dark') === 'true') {
+    document.body.classList.add('dark');
+  }
+
+  // SCROLL REVEAL
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
